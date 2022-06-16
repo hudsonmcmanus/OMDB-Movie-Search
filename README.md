@@ -4,7 +4,7 @@ Search for movies with the OMDB API.
 
 ## How to Run & Install
 
-In the project directory run:
+In the project directory:
 
 Install all dependencies
 ### `npm install`
