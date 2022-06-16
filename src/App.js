@@ -12,17 +12,21 @@ require('dotenv').config()
 
 
 function App() {
-  const [movieList, updateMovieList] = useState([]);
+  const [movieList, setMovieList] = useState([]);
+  const [error, setError] = useState(false);
 
   const fetchMovies = event => {
-    setTimeout(() => {
-      axios
-        .get(`https://www.omdbapi.com/?type=movie&i=tt3896198&apikey=${process.env.REACT_APP_API_KEY}&s=${event.target.value.trim()}`)
-        .then((res) => {
-          (res.data.Search ? updateMovieList([...res.data.Search]) : updateMovieList([]))
-        })
-    }, 300)
-
+    if (!error) {
+      setTimeout(() => {
+        axios
+          .get(`https://www.omdbapi.com/?type=movie&i=tt3896198&apikey=${process.env.REACT_APP_API_KEY}&s=${event.target.value.trim()}`)
+          .then((res) => {
+            (res.data.Search ? setMovieList([...res.data.Search]) : setMovieList([]))
+          }).catch((error) => {
+            setError(true);
+          });
+      }, 300)
+    }
   }
 
   return (
@@ -70,6 +74,12 @@ function App() {
               movie={movie}
             />
           ))
+        ) : error ? (
+          <div>
+            <h3 style={{ color: 'rgb(229 59 59)' }}>
+              Looks like Your OMDB api key is invalid, Check the project README for more information
+            </h3>
+          </div>
         ) : (
           <div>
             <h3 style={{ color: 'rgb(98 100 107)' }}>
@@ -154,7 +164,7 @@ const Github = styled(GitHubIcon)`
   &:hover {
       color: rgb(26, 29, 41);
   }`;
-  
+
 const LinkedIn = styled(LinkedInIcon)`
 
   &:hover {
