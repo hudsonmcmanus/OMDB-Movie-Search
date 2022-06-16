@@ -27,19 +27,6 @@ p {
   height: 480px;
 }
 
-.movieCard {
-  position: relative;
-  height: auto !important;
-  border: 2px solid #101010 !important;
-  border-radius: 10px !important;
-  color: #ccc !important;
-  background-color: rgb(96 96 96 / 18%) !important;
-  width: 350px;
-  margin: 5px;
-  float: left;
-  transition: transform 1.2s; /* Animation */
-}
-
 
 .movieCard:hover {
   background-color: #101010 !important;

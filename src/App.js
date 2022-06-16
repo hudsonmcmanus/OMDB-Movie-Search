@@ -4,10 +4,8 @@ import axios from "axios";
 import styled from "styled-components";
 import MovieComponent from "./components/MovieComponent";
 import { InputAdornment, TextField, Box } from '@mui/material';
-import { Link } from '@material-ui/core';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import SearchIcon from '@mui/icons-material/Search';
+import {Header} from './components/Header'
 require('dotenv').config()
 
 
@@ -17,6 +15,7 @@ function App() {
 
   const fetchMovies = event => {
     if (!error) {
+      // Send api request every 300ms while typing
       setTimeout(() => {
         axios
           .get(`https://www.omdbapi.com/?type=movie&i=tt3896198&apikey=${process.env.REACT_APP_API_KEY}&s=${event.target.value.trim()}`)
@@ -31,23 +30,7 @@ function App() {
 
   return (
     <Container>
-      <Header>
-        <AppName onClick={() => window.location.reload()}>
-          <span>OMDB Movie Search</span>
-        </AppName>
-        <div>
-          <LinkWrapper href="https://github.com/hudsonmcmanus" target="_blank" sx={{ m: 20 }}>
-            <Github sx={{ color: "white" }} fontSize="large" />
-          </LinkWrapper>
-          <LinkWrapper href="https://www.linkedin.com/in/hudsonmcmanus/" target="_blank" sx={{ m: 20 }}>
-            <LinkedIn
-              sx={{ color: "white" }} fontSize="large" />
-          </LinkWrapper>
-        </div>
-
-
-      </Header>
-
+      <Header/>
       <Box
         display="flex"
         alignItems="center"
@@ -68,6 +51,7 @@ function App() {
 
       <MovieListContainer>
         {movieList.length ? (
+          // Map each movie to a MovieComponent
           movieList.map((movie, index) => (
             <MovieComponent
               key={index}
@@ -75,12 +59,14 @@ function App() {
             />
           ))
         ) : error ? (
+          // If api key is invalid display message to user
           <div>
             <h3 style={{ color: 'rgb(229 59 59)' }}>
               Looks like Your OMDB api key is invalid, Check the project README for more information
             </h3>
           </div>
         ) : (
+          // No results message
           <div>
             <h3 style={{ color: 'rgb(98 100 107)' }}>
               No results with that search
@@ -105,44 +91,6 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const AppName = styled.div`
-  cursor: pointer;
-  color: #ccc;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  text-align: center;
-  content: "hello";
-
-  &:hover {
-    color: rgb(26, 29, 41);
-  };
-  @media (max-width: 768px) {
-     span {
-      display: none;
-    };
-     &:after {
-      content: 'Moive Search';
-    };
-  };
-`;
-
-const Header = styled.div`
-  z-index: 100;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #090b13ed;
-  color: #ccc;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-  padding: 15px;
-  font-size: 25px;
-  font-weight: bold;
-`;
-
 const MovieListContainer = styled.div`
   margin-top: 5px;
   display: flex;
@@ -152,23 +100,5 @@ const MovieListContainer = styled.div`
   gap: 25px;
   justify-content: center;
 `;
-
-const LinkWrapper = styled(Link)`
-  margin-right: 50px !important;
-  
-  @media (max-width: 768px) {
-    margin-right: 25px !important;
-  }`;
-
-const Github = styled(GitHubIcon)`
-  &:hover {
-      color: rgb(26, 29, 41);
-  }`;
-
-const LinkedIn = styled(LinkedInIcon)`
-
-  &:hover {
-      color: rgb(26, 29, 41);
-  }`;
 
 export default App;
