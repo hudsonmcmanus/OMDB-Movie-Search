@@ -4,7 +4,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import styled from "styled-components";
 
-export const Header = () => {
+const Header = () => {
     return (
         <HeaderWrapper>
             <AppName onClick={() => window.location.reload()}>
@@ -78,3 +78,5 @@ const HeaderWrapper = styled.div`
   font-size: 25px;
   font-weight: bold;
 `;
+
+export default Header;

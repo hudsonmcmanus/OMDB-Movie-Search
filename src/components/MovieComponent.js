@@ -7,7 +7,6 @@ import { CardActions, Typography } from "@mui/material";
 const MovieComponent = (props) => {
     const { Title, Year, Poster } = props.movie;
 
-
     return (
         <MovieCard variant="outlined">
             {Poster !== "N/A" ? (
@@ -50,7 +49,7 @@ transition: transform 1.2s;
 &:hover {
     background-color: #101010 !important;
     transform: scale(1.02);
-}
+};
 `
 
 const Tag = styled.span`

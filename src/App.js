@@ -5,9 +5,8 @@ import styled from "styled-components";
 import MovieComponent from "./components/MovieComponent";
 import { InputAdornment, TextField, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import {Header} from './components/Header'
+import Header from './components/Header'
 require('dotenv').config()
-
 
 function App() {
   const [movieList, setMovieList] = useState([]);
@@ -30,7 +29,7 @@ function App() {
 
   return (
     <Container>
-      <Header/>
+      <Header />
       <Box
         display="flex"
         alignItems="center"
@@ -75,8 +74,6 @@ function App() {
         )}
       </MovieListContainer>
     </Container>
-
-
   );
 }
 
