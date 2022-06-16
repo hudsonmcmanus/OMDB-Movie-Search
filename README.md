@@ -19,7 +19,7 @@ Create a .env file in the project root and add your OMDB API key with the follow
 Then run
 ### `npm start`
 
-## API Key Trouble Shooting
+## API Key Troubleshooting
 
 If you api key is not working it could be 1 of the following reasons:  
 
