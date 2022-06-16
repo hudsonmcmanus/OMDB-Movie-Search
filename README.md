@@ -1,11 +1,12 @@
 # React OMDB Movie Search App
 
-Search for movies with the OMDB API.
+🔍 Search for movies with the OMDB API.   
+📱  Web and Mobile friendly UI
 
-## How to Get API key
+## Get API key 🔑
 Free API key: http://www.omdbapi.com/apikey.aspx
 
-## How to Run & Install
+## Run & Install
 
 In the project directory:
 
