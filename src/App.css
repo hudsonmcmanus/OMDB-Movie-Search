@@ -16,19 +16,3 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
-
-
-p {
-  color: #ccc;
-}
-
-.moviePoster {
-  width: 360px;
-  height: 480px;
-}
-
-
-.movieCard:hover {
-  background-color: #101010 !important;
-  transform: scale(1.02);
-}
