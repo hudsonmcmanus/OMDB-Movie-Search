@@ -2,6 +2,9 @@
 
 Search for movies with the OMDB API.
 
+## How to Get API key
+Free API key: http://www.omdbapi.com/apikey.aspx
+
 ## How to Run & Install
 
 In the project directory:
